@@ -3,20 +3,20 @@
     <!-- Brand Logo Light -->
     <a href="index.jsp" class="logo logo-light">
         <span class="logo-lg">
-            <img src="assets/images/logo.png" alt="logo">
+            <h4><span class="badge bg-danger">Héroes del Perú</span></h4>
         </span>
         <span class="logo-sm">
-            <img src="assets/images/logo-sm.png" alt="small logo">
+            <h4><span class="badge bg-danger">HP</span></h4>
         </span>
     </a>
 
     <!-- Brand Logo Dark -->
     <a href="index.jsp" class="logo logo-dark">
         <span class="logo-lg">
-            <img src="assets/images/logo-dark.png" alt="dark logo">
+            <h4><span class="badge bg-danger">Héroes del Perú</span></h4>
         </span>
         <span class="logo-sm">
-            <img src="assets/images/logo-dark-sm.png" alt="small logo">
+            <h4><span class="badge bg-danger">HP</span></h4>
         </span>
     </a>
 
@@ -43,210 +43,67 @@
         <!--- Sidemenu -->
         <ul class="side-nav">
 
-            <li class="side-nav-title">Navigation</li>
 
             <li class="side-nav-item">
-                <a href="index.jsp" class="side-nav-link">
-                    <i class="uil-home-alt"></i>
-                    <span class="badge bg-success float-end">5</span>
-                    <span> Dashboards </span>
-                </a>
-            </li>
-
-            <li class="side-nav-title">Custom</li>
-
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
-                    <i class="uil-copy-alt"></i>
-                    <span> Pages </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarPages">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="pages-maintenance.jsp">Maintenance</a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false" aria-controls="sidebarPagesAuth">
-                                <span> Authentication </span>
-                                <span class="menu-arrow"></span>
+                            <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                                <i class="uil-home-alt"></i>
+                                <span> Dashboards </span>
                             </a>
-                            <div class="collapse" id="sidebarPagesAuth">
-                                <ul class="side-nav-third-level">
+                            <div class="collapse" id="sidebarDashboards">
+                                <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="pages-login.jsp">Login</a>
+                                        <a href="index.jsp">Matriculados</a>
                                     </li>
                                     <li>
-                                        <a href="login.jsp">Login 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-register.jsp">Register</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-register-2.jsp">Register 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-logout.jsp">Logout</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-logout-2.jsp">Logout 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-recoverpw.jsp">Recover Password</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-recoverpw-2.jsp">Recover Password 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-lock-screen.jsp">Lock Screen</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-lock-screen-2.jsp">Lock Screen 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-confirm-mail.jsp">Confirm Mail</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-confirm-mail-2.jsp">Confirm Mail 2</a>
+                                        <a href="asignados.jsp">Asignados</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarPagesError" aria-expanded="false" aria-controls="sidebarPagesError">
-                                <span> Error </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarPagesError">
-                                <ul class="side-nav-third-level">
-                                    <li>
-                                        <a href="pages-404.jsp">Error 404</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-404-alt.jsp">Error 404-alt</a>
-                                    </li>
-                                    <li>
-                                        <a href="pages-500.jsp">Error 500</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="pages-starter.jsp">Starter Page</a>
-                        </li>
-                        <li>
-                            <a href="pages-preloader.jsp">With Preloader</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
+            <li class="side-nav-title">Analizar</li>
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarLayouts" aria-expanded="false" aria-controls="sidebarLayouts" class="side-nav-link">
-                    <i class="uil-window"></i>
-                    <span> Layouts </span>
-                    <span class="menu-arrow"></span>
+                <a href="matriculas.jsp" class="side-nav-link">
+                    <i class=" uil-notes "></i>
+                    <span>Matriculas</span>
                 </a>
-                <div class="collapse" id="sidebarLayouts">
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="layouts-horizontal.jsp" target="_blank">Horizontal</a>
-                        </li>
-                        <li>
-                            <a href="layouts-detached.jsp" target="_blank">Detached</a>
-                        </li>
-                        <li>
-                            <a href="layouts-full.jsp" target="_blank">Full View</a>
-                        </li>
-                        <li>
-                            <a href="layouts-fullscreen.jsp" target="_blank">Fullscreen View</a>
-                        </li>
-                        <li>
-                            <a href="layouts-hover.jsp" target="_blank">Hover Menu</a>
-                        </li>
-                        <li>
-                            <a href="layouts-compact.jsp" target="_blank">Compact</a>
-                        </li>
-                        <li>
-                            <a href="layouts-icon-view.jsp" target="_blank">Icon View</a>
-                        </li>
-                    </ul>
-                </div>
             </li>
-
-            <li class="side-nav-title">Components</li>
-
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false" aria-controls="sidebarMultiLevel" class="side-nav-link">
-                    <i class="uil-folder-plus"></i>
-                    <span> Multi Level </span>
-                    <span class="menu-arrow"></span>
+                <a href="horarios.jsp" class="side-nav-link">
+                    <i class="uil-bell-school"></i>
+                    <span>Horarios</span>
                 </a>
-                <div class="collapse" id="sidebarMultiLevel">
-                    <ul class="side-nav-second-level">
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false" aria-controls="sidebarSecondLevel">
-                                <span> Second Level </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarSecondLevel">
-                                <ul class="side-nav-third-level">
-                                    <li>
-                                        <a href="javascript: void(0);">Item 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);">Item 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
-                                <span> Third Level </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarThirdLevel">
-                                <ul class="side-nav-third-level">
-                                    <li>
-                                        <a href="javascript: void(0);">Item 1</a>
-                                    </li>
-                                    <li class="side-nav-item">
-                                        <a data-bs-toggle="collapse" href="#sidebarFourthLevel" aria-expanded="false" aria-controls="sidebarFourthLevel">
-                                            <span> Item 2 </span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <div class="collapse" id="sidebarFourthLevel">
-                                            <ul class="side-nav-forth-level">
-                                                <li>
-                                                    <a href="javascript: void(0);">Item 2.1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript: void(0);">Item 2.2</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </li>
-
-
-            <!-- Help Box -->
-            <div class="help-box text-white text-center">
-                <a href="javascript: void(0);" class="float-end close-btn text-white">
-                    <i class="mdi mdi-close"></i>
+            <li class="side-nav-item">
+                <a href="salones.jsp" class="side-nav-link">
+                    <i class=" uil-presentation-plus"></i>
+                    <span> Salones</span>
                 </a>
-                <img src="assets/images/svg/help-icon.svg" height="90" alt="Helper Icon Image" />
-                <h5 class="mt-3">Unlimited Access</h5>
-                <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                <a href="javascript: void(0);" class="btn btn-secondary btn-sm">Upgrade</a>
-            </div>
-            <!-- end Help Box -->
-
-
+            </li>
+            <li class="side-nav-item">
+                <a href="cursos.jsp" class="side-nav-link">
+                    <i class=" uil-notebooks"></i>
+                    <span>Cursos</span>
+                </a>
+            </li>
+            <li class="side-nav-title">Gestionar</li>
+            <li class="side-nav-item">
+                <a href="estudiantes.jsp" class="side-nav-link">
+                    <i class=" uil-graduation-hat"></i>
+                    <span> Estudiantes </span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="docentes.jsp" class="side-nav-link">
+                    <i class=" uil-abacus"></i>
+                    <span> Docentes</span>
+                </a>
+            </li>
+            <li class="side-nav-item">
+                <a href="equipo.jsp" class="side-nav-link">
+                    <i class="uil-user-plus "></i>
+                    <span>Equipo</span>
+                </a>
+            </li>
         </ul>
         <!--- End Sidemenu -->
 
