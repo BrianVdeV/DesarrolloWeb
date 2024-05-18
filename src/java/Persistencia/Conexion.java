@@ -1,23 +1,23 @@
+
 package Persistencia;
-
 import java.sql.*;
-
-public class Conexion implements Parametros {
-
-    public Connection con;
-    public PreparedStatement ps;
-    public Statement st;
-    public ResultSet rs;
-    public String mensaje;
-
-    public Conexion() {
-        try {
-            Class.forName(DRIVER);
-            con = DriverManager.getConnection(URL, USER, CLAVE);
-            st = con.createStatement();
-            mensaje = "Conexión OK!!!";
-        } catch (Exception ex) {
-            mensaje = "ERROR al conectar base de datos." + ex.getMessage();
-        }//fin del try
-    }//fin del constructor
-}//fin de la clase
+public class Conexion implements Parametros{
+      private Connection con;
+      public PreparedStatement ps;           
+       public Statement smt;
+       public ResultSet rs;
+       public String mensaje;
+       public Conexion(){
+           try{
+                Class.forName(Driver);
+                con = DriverManager.getConnection(url, user, clave);            
+                smt = con.createStatement();
+                mensaje="Conexion OK!!!!";
+            }catch(Exception ex){
+                mensaje="ERROR al conectar base de datos";      
+       }
+     }
+     public Connection getConnection(){
+        return con;
+    }
+}
