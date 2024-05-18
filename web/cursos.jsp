@@ -1,3 +1,6 @@
+<%@page import="Modelo.*" %>
+<%@page import="DAO.*" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,57 +73,25 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
+                                        <%
+                                            DAOcurso dao = new DAOcurso();
+                                            ArrayList<DTOcurso> Lista = dao.ListarCursos();
+                                            DTOcurso c = null;
+                                            for (int i = 0; i < Lista.size(); i++) {
+                                                c = Lista.get(i);
+                                        %>  
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Matematica</td>
-                                                <td>1</td>
-                                                <td>3</td>
+                                                <td><%= c.getId_curso()  %></td>
+                                                <td><%= c.getNombre()  %></td>
+                                                <td><%= c.getAnio()  %></td>
+                                                <td><%= c.getHoras()  %></td>
                                                 <td class="table-action">
                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Lengua</td>
-                                                <td>6</td>
-                                                <td>2</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Ciencias Sociales</td>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Ciencias Naturales</td>
-                                                <td>3</td>
-                                                <td>2</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Tecnologia</td>
-                                                <td>5</td>
-                                                <td>3</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
+                                            <%  } %>
                                         </tbody>
                                     </table>
                                 </div>
