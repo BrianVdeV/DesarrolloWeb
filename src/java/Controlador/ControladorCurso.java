@@ -12,15 +12,14 @@ import javax.servlet.RequestDispatcher;
 
 @WebServlet(name = "ControladorCurso", urlPatterns = {"/ControladorCurso"})
 public class ControladorCurso extends HttpServlet {
-    String listar="cursos.jsp";
-    String add="vistas/AgregarCurso.jsp";
-    String edit="vistas/EditarCurso.jsp";
+    String listar="cursos.jsp?null";
+    String add="cursos.jsp";
+    String edit="cursos.jsp";
     DTOcurso curso =  new DTOcurso();
     DAOcurso dao = new DAOcurso();
     String id;
     //método que lee los datos del curso
     public void LeerDatosCurso(HttpServletRequest request, HttpServletResponse response){
-        curso.setId_curso(Integer.parseInt(request.getParameter("txtId")));
         curso.setNombre(request.getParameter("txtNombre"));
         curso.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
         curso.setHoras(Integer.parseInt(request.getParameter("txtHoras")));
