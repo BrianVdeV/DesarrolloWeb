@@ -63,7 +63,7 @@
 
 
                                     <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mdlAgregar">Agregar Curso</button>
-                                    <table class="table table-striped table-centered mb-0">
+                                    <table class="table table-centered mb-0">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -82,16 +82,16 @@
                                         %>  
                                         <tbody>
                                             <tr>
-                                                <td><%= c.getId_curso()  %></td>
-                                                <td><%= c.getNombre()  %></td>
-                                                <td><%= c.getAnio()  %></td>
-                                                <td><%= c.getHoras()  %></td>
+                                                <td><%= c.getId_curso()%></td>
+                                                <td><%= c.getNombre()%></td>
+                                                <td><%= c.getAnio()%></td>
+                                                <td><%= c.getHoras()%></td>
                                                 <td class="table-action">
                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
                                                     <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>
-                                            <%  } %>
+                                            <%  }%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -113,24 +113,26 @@
                             <h4 class="modal-title" id="standard-modalLabel">Agregar Cursos</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Nombre</label>
-                                <input type="text" id="simpleinput" class="form-control">
+                        <form action="ControladorCurso">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Nombre</label>
+                                    <input type="text" id="simpleinput" class="form-control" name="txtNombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-number" class="form-label">Año</label>
+                                    <input class="form-control" id="example-number" type="number" name="txtAnio">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-number" class="form-label">Horas Semanales</label>
+                                    <input class="form-control" id="example-number" type="number" name="txtHoras">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="example-number" class="form-label">Año</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
                             </div>
-                            <div class="mb-3">
-                                <label for="example-number" class="form-label">Horas Semanales</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+                        </form>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
