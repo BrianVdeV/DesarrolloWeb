@@ -12,7 +12,7 @@ import javax.servlet.RequestDispatcher;
 
 @WebServlet(name = "ControladorCurso", urlPatterns = {"/ControladorCurso"})
 public class ControladorCurso extends HttpServlet {
-    String listar="cursos.jsp?null";
+    String listar="cursos.jsp";
     String add="cursos.jsp";
     String edit="cursos.jsp";
     DTOcurso curso =  new DTOcurso();
@@ -20,6 +20,7 @@ public class ControladorCurso extends HttpServlet {
     String id;
     //método que lee los datos del curso
     public void LeerDatosCurso(HttpServletRequest request, HttpServletResponse response){
+        curso.setId_curso(Integer.parseInt(request.getParameter("txtId")));
         curso.setNombre(request.getParameter("txtNombre"));
         curso.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
         curso.setHoras(Integer.parseInt(request.getParameter("txtHoras")));

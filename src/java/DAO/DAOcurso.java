@@ -58,21 +58,24 @@ public class DAOcurso extends Conexion implements CRUDcurso {
 
     @Override
     public boolean EditarCurso(DTOcurso cur) {
-        String SQL="update curso set nombre=?,sueldo_min=?,sueldo_max=? where idcurso=?";
+        String SQL="update curso set nombre=?,anio=?,horas=? where id_curso=?";
         try{
             ps = super.getConnection().prepareStatement(SQL);           
             ps.setString(1, cur.getNombre());
+            ps.setInt(2, cur.getAnio());
+            ps.setInt(3, cur.getHoras());
+            ps.setInt(4, cur.getId_curso());
             ps.executeUpdate();
            }catch(Exception ex){ Mensajes("ERROR no se puede editar curso "+ex);  }
         return false;
     }
 
     @Override
-    public boolean EliminarCurso(String id) {
-       String SQL = "update curso set indicador='N' where idcurso=?";
+    public boolean EliminarCurso(int id) {
+       String SQL = "DELETE FROM cursos WHERE id_curso = ?";
        try{
             ps = super.getConnection().prepareStatement(SQL);           
-            ps.setString(1,id);
+            ps.setInt(1,id);
             ps.executeUpdate();
        }catch(Exception ex){ Mensajes("ERROR no se puede eliminar curso "+ex);  }
        return false;
