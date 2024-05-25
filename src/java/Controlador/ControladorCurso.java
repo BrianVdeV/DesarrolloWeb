@@ -1,4 +1,5 @@
 package Controlador;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,45 +13,50 @@ import javax.servlet.RequestDispatcher;
 
 @WebServlet(name = "ControladorCurso", urlPatterns = {"/ControladorCurso"})
 public class ControladorCurso extends HttpServlet {
-    String listar="cursos.jsp";
-    String add="cursos.jsp";
-    String edit="cursos.jsp";
-    DTOcurso curso =  new DTOcurso();
+
+    String listar = "cursos.jsp";
+    String add = "cursos.jsp";
+    String edit = "cursos.jsp";
+    DTOcurso curso = new DTOcurso();
     DAOcurso dao = new DAOcurso();
-    String id;
+    int id;
+
     //método que lee los datos del curso
-    public void LeerDatosCurso(HttpServletRequest request, HttpServletResponse response){
-        curso.setId_curso(Integer.parseInt(request.getParameter("txtId")));
+    public void LeerDatosCurso(HttpServletRequest request, HttpServletResponse response) {
+        String idStr = request.getParameter("txtId");
+        if (idStr != null && !idStr.trim().isEmpty()) {
+            curso.setId_curso(Integer.parseInt(idStr));
+        }
         curso.setNombre(request.getParameter("txtNombre"));
         curso.setAnio(Integer.parseInt(request.getParameter("txtAnio")));
         curso.setHoras(Integer.parseInt(request.getParameter("txtHoras")));
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String acceso="";
+
+        String acceso = "";
         String action = request.getParameter("accion");
-        if(action.equalsIgnoreCase("listar")){
-            acceso=listar;
-        }else if(action.equalsIgnoreCase("add")){
-            acceso=add;
-        }else if(action.equalsIgnoreCase("Agregar")){
-            LeerDatosCurso(request,response);
+        if (action.equalsIgnoreCase("listar")) {
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("add")) {
+            acceso = add;
+        } else if (action.equalsIgnoreCase("Agregar")) {
+            LeerDatosCurso(request, response);
             dao.AgregarCurso(curso);
-            acceso=listar;
-        }else if(action.equalsIgnoreCase("editar")){
-            request.setAttribute("idcar",request.getParameter("idcar"));
-            acceso=edit;
-        }else if(action.equalsIgnoreCase("Actualizar")){
-             LeerDatosCurso(request,response);
-             dao.EditarCurso(curso);
-             acceso=listar;
-        }else if(action.equalsIgnoreCase("Eliminar")){
-            id= request.getParameter("idcar");
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("editar")) {
+            request.setAttribute("idcar", request.getParameter("idcar"));
+            acceso = edit;
+        } else if (action.equalsIgnoreCase("Actualizar")) {
+            LeerDatosCurso(request, response);
+            dao.EditarCurso(curso);
+            acceso = listar;
+        } else if (action.equalsIgnoreCase("Eliminar")) {
+            id = Integer.parseInt(request.getParameter("idcar"));
             dao.EliminarCurso(id);
-            acceso=listar;
+            acceso = listar;
         }//termino del if anidado
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

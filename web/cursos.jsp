@@ -86,7 +86,7 @@
                                                 <td><%= c.getHoras()%></td>
                                                 <td class="text-center">
                                                     <a class="btn btn-warning" onclick="openEditModal('<%= c.getId_curso() %>', '<%= c.getNombre() %>', '<%= c.getAnio() %>', '<%= c.getHoras() %>')">Editar</a>
-                                                    <a class="btn btn-danger"">Eliminar</a>
+                                                    <a class="btn btn-danger" href="ControladorCurso?accion=eliminar&idcar=<%= c.getId_curso()%>">Eliminar</a>
                                                 </td>
                                             </tr>
                                             <% }%>

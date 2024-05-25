@@ -30,11 +30,11 @@ public class DAOcurso extends Conexion implements CRUDcurso {
           return Lista;   
     }//fin listar
     @Override
-    public DTOcurso ObtenerCurso(String id) {
-        String SQL="select * from curso where indicador='S' and idcurso=?";
+    public DTOcurso ObtenerCurso(int id) {
+        String SQL="select * from curso where id_curso=?";
         try{
             ps = super.getConnection().prepareStatement(SQL);
-            ps.setString(1,id);
+            ps.setInt(1,id);
             rs = ps.executeQuery();
             if(rs.next()){
                 curso.setId_curso(rs.getInt(1));
@@ -72,7 +72,7 @@ public class DAOcurso extends Conexion implements CRUDcurso {
 
     @Override
     public boolean EliminarCurso(int id) {
-       String SQL = "DELETE FROM cursos WHERE id_curso = ?";
+       String SQL = "DELETE FROM curso WHERE id_curso = ?";
        try{
             ps = super.getConnection().prepareStatement(SQL);           
             ps.setInt(1,id);
