@@ -44,15 +44,15 @@
                     <p class="text-muted mb-4">Ingresa tu correo y contraseña para iniciar sesión.</p>
 
                     <!-- form -->
-                    <form action="index.jsp">
+                    <form action="srvLogin?accion=verificar" method="POST">
                         <div class="mb-3">
                             <label for="emailaddress" class="form-label">Correo</label>
-                            <input class="form-control" type="email" id="emailaddress" required="" placeholder="Intresa tu email">
+                            <input class="form-control" type="email" name="emailaddress" id="emailaddress" required="" placeholder="Intresa tu email">
                         </div>
                         <div class="mb-3">
                             <a href="pages-recoverpw-2.jsp" class="text-muted float-end"><small>¿Olvidaste tu contraseña?</small></a>
                             <label for="password" class="form-label">Contraseña</label>
-                            <input class="form-control" type="password" required="" id="password" placeholder="Ingresa tu contraseña">
+                            <input class="form-control" type="password" required="" name="password" id="password" placeholder="Ingresa tu contraseña">
                         </div>
                         <div class="mb-3">
                             <div class="form-check">
@@ -63,6 +63,12 @@
                         <div class="d-grid mb-0 text-center">
                             <button class="btn btn-primary" type="submit"><i class="mdi mdi-login"></i>Iniciar sesión</button>
                         </div>
+                        <%
+                String mensaje = (String)request.getAttribute("mensaje");
+                if(mensaje!=null){
+                   out.print("<p class='error'>"+mensaje+"</p>");
+                }
+            %>
                     </form>
                     <!-- end form-->
                 </div>
