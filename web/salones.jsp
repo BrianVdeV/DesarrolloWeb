@@ -1,3 +1,6 @@
+<%@page import="Modelo.*" %>
+<%@page import="DAO.*" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,56 +74,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <%
+                                                DAOdocente dao = new DAOdocente();
+                                                ArrayList<DTOdocente> Lista = dao.ListarDocentes();
+                                                DTOdocente d = null;
+                                                for (int i = 0; i < Lista.size(); i++) {
+                                                    d = Lista.get(i);
+                                            %>
                                             <tr>
-                                                <td>1</td>
-                                                <td>A</td>
-                                                <td>2</td>
-                                                <td>30</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                <td><%= d.getId_docente()%></td>
+                                                <td><%= d.getApellido()%></td>
+                                                <td><%= d.getNombre()%></td>
+                                                <td><%= d.getDni()%></td>
+                                                <td><%= d.getSexo()%></td>
+                                                <td><%= d.getFecha()%></td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning" onclick="openEditModal('<%= d.getId_docente()%>', '<%= d.getApellido()%>', '<%= d.getNombre()%>', '<%= d.getDni()%>', '<%= d.getSexo()%>', '<%= d.getFecha()%>')">Editar</a>
+                                                    <a class="btn btn-danger" href="ControladorDocente?accion=eliminar&iddoc=<%= d.getId_docente()%>">Eliminar</a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>B</td>
-                                                <td>6</td>
-                                                <td>28</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>A</td>
-                                                <td>1</td>
-                                                <td>30</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>A</td>
-                                                <td>3</td>
-                                                <td>20</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>B</td>
-                                                <td>8</td>
-                                                <td>18</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
+                                            <%  }%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -172,7 +145,17 @@
 
         <!-- Theme Settings -->
         <%@ include file="assets/inc/theme.jsp" %>
-
+        <script>
+            function openEditModal(id, apellido, nombre, dni, sexo, fecha) {
+                $('#editID').val(id);
+                $('#editApellido').val(apellido);
+                $('#editNombre').val(nombre);
+                $('#editDNI').val(dni);
+                $('#editSexo').val(sexo);
+                $('#editFecha').val(fecha);
+                $('#mdlEditar').modal('show');
+            }
+        </script>
         <!-- Vendor js -->
         <script src="assets/js/vendor.min.js"></script>
 
