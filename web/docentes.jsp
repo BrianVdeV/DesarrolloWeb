@@ -75,14 +75,14 @@
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <%
-                                            DAOdocente dao = new DAOdocente();
-                                            ArrayList<DTOdocente> Lista = dao.ListarDocentes();
-                                            DTOdocente d = null;
-                                            for (int i = 0; i < Lista.size(); i++) {
-                                                d = Lista.get(i);
-                                        %>  
                                         <tbody>
+                                            <%
+                                                DAOdocente dao = new DAOdocente();
+                                                ArrayList<DTOdocente> Lista = dao.ListarDocentes();
+                                                DTOdocente d = null;
+                                                for (int i = 0; i < Lista.size(); i++) {
+                                                    d = Lista.get(i);
+                                            %>
                                             <tr>
                                                 <td><%= d.getId_docente()%></td>
                                                 <td><%= d.getApellido()%></td>
@@ -206,7 +206,7 @@
         <!-- Theme Settings -->
         <%@ include file="assets/inc/theme.jsp" %>
         <script>
-            function openEditModal(id, apellido,nombre,dni, sexo,fecha) {
+            function openEditModal(id, apellido, nombre, dni, sexo, fecha) {
                 $('#editID').val(id);
                 $('#editApellido').val(apellido);
                 $('#editNombre').val(nombre);
