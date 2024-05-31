@@ -22,11 +22,11 @@ CREATE TABLE usuario (
 
 CREATE TABLE estudiante (
     id_estudiante INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50),
+    nombre VARCHAR(50),
     dni INT(8),
-    edad INT,
-    grado VARCHAR(20),
+    sexo varchar(50),
+    fecha varchar(50),
     responsable VARCHAR(100)
 );
 CREATE TABLE docente (
@@ -87,4 +87,5 @@ insert into usuario (nombre,correo,contra) values ('Alex','alex@gmail.com','1234
 insert into usuario (nombre,correo,contra) values ('Xiomara','xiomara@gmail.com','1234');
 
 insert into curso (nombre,anio,horas) values ('Matematica','1','1');
-insert into docente (apellido,nombre,dni,sexo,fecha) values ('Esposito','Daniel','12345678','Masculino','08-02-1976');
+insert into docente (apellido,nombre,dni,sexo,fecha) values ('Esposito','Daniel','12345678','Masculino','1976-08-02');
+insert into estudiante (apellido,nombre,dni,sexo,fecha,responsable) values ('Messi','Lionel','12345678','Masculino','2004-09-21','Messi Daniel');

@@ -1,3 +1,6 @@
+<%@page import="Modelo.*" %>
+<%@page import="DAO.*" %>
+<%@page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,70 +66,38 @@
                                     <table class="table table-striped table-centered mb-0">
                                         <thead>
                                             <tr>
-                                                <th>Apellidos</th>
-                                                <th>Nombres</th>
+                                                <th>ID</th>
+                                                <th>Apellido</th>
+                                                <th>Nombre</th>
                                                 <th>DNI</th>
                                                 <th>Sexo</th>
                                                 <th>Fecha de nacimiento</th>
+                                                <th>Responsable</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <%
+                                                DAOestudiante dao = new DAOestudiante();
+                                                ArrayList<DTOestudiante> Lista = dao.ListarEstudiantes();
+                                                DTOestudiante d = null;
+                                                for (int i = 0; i < Lista.size(); i++) {
+                                                    d = Lista.get(i);
+                                            %>
                                             <tr>
-                                                <td>Lopez</td>
-                                                <td>Juan</td>
-                                                <td>12345678</td>
-                                                <td>Masculino</td>
-                                                <td>10/02/1992</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                <td><%= d.getId_estudiante()%></td>
+                                                <td><%= d.getApellido()%></td>
+                                                <td><%= d.getNombre()%></td>
+                                                <td><%= d.getDni()%></td>
+                                                <td><%= d.getSexo()%></td>
+                                                <td><%= d.getFecha()%></td>
+                                                <td><%= d.getResponsable()%></td>
+                                                <td class="text-center">
+                                                    <a class="btn btn-warning" onclick="openEditModal('<%= d.getId_estudiante()%>', '<%= d.getApellido()%>', '<%= d.getNombre()%>', '<%= d.getDni()%>', '<%= d.getSexo()%>', '<%= d.getFecha()%>','<%= d.getResponsable()%>')">Editar</a>
+                                                    <a class="btn btn-danger" href="ControladorEstudiante?accion=eliminar&iddoc=<%= d.getId_estudiante()%>">Eliminar</a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Gonzalez</td>
-                                                <td>Maria</td>
-                                                <td>98765432</td>
-                                                <td>Femenino</td>
-                                                <td>25/08/1980</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rodriguez</td>
-                                                <td>Carlos</td>
-                                                <td>45678901</td>
-                                                <td>Masculino</td>
-                                                <td>03/12/1975</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Martinez</td>
-                                                <td>Ana</td>
-                                                <td>56789012</td>
-                                                <td>Femenino</td>
-                                                <td>15/06/1995</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Perez</td>
-                                                <td>Luis</td>
-                                                <td>34567890</td>
-                                                <td>Masculino</td>
-                                                <td>28/04/1987</td>
-                                                <td class="table-action">
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
-                                                    <a href="javascript: void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
+                                            <%  }%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -148,35 +119,90 @@
                             <h4 class="modal-title" id="standard-modalLabel">Agregar Estudiante</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Apellidos</label>
-                                <input type="text" id="simpleinput" class="form-control">
+                        <form action="ControladorEstudiante">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Apellido</label>
+                                    <input type="text" id="simpleinput" class="form-control" name="txtApellido">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Nombre</label>
+                                    <input type="text" id="simpleinput" class="form-control" name="txtNombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-number" class="form-label">DNI</label>
+                                    <input class="form-control" id="example-number" type="number" name="txtDNI">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-select" class="form-label">Sexo</label>
+                                    <select class="form-select" id="example-select" name="txtSexo">
+                                        <option>Masculino</option>
+                                        <option>Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="example-date" class="form-label">Fecha de Nacimiento</label>
+                                    <input class="form-control" id="example-date" type="date" name="txtFecha">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Responsable</label>
+                                    <input type="text" id="simpleinput" class="form-control" name="txtResponsable">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="simpleinput" class="form-label">Nombres</label>
-                                <input type="text" id="simpleinput" class="form-control">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
                             </div>
-                            <div class="mb-3">
-                                <label for="example-number" class="form-label">DNI</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
-                            </div>
-                            <div class="mb-3">
-                                <label for="example-select" class="form-label">Sexo</label>
-                                <select class="form-select" id="example-select">
-                                    <option>Masculino</option>
-                                    <option>Femenino</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="example-date" class="form-label">Fecha de Nacimiento</label>
-                                <input class="form-control" id="example-date" type="date" name="date">
-                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="mdlEditar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="standard-modalLabel">Editar Docente</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+                        <form action="ControladorEstudiante">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="editID" class="form-label">ID</label>
+                                    <input type="number" id="editID" disabled="" class="form-control" name="txtID">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editApellido" class="form-label">Apellido</label>
+                                    <input type="text" id="editApellido" class="form-control" name="txtApellido">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editNombre" class="form-label">Nombre</label>
+                                    <input type="text" id="editNombre" class="form-control" name="txtNombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDNI" class="form-label">DNI</label>
+                                    <input class="form-control" id="editDNI" type="number" name="txtDNI">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editSexo" class="form-label">Sexo</label>
+                                    <select class="form-select" id="editSexo" name="txtSexo">
+                                        <option>Masculino</option>
+                                        <option>Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editFecha" class="form-label">Fecha de Nacimiento</label>
+                                    <input class="form-control" id="editFecha" type="date" name="txtFecha">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editResponsable" class="form-label">Responsable</label>
+                                    <input type="text" id="editResponsable" class="form-control" name="txtResponsable">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                <input class="btn btn-primary" type="submit" name="accion" value="Actualizar">
+                            </div>
+                        </form>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
@@ -189,7 +215,18 @@
 
         <!-- Theme Settings -->
         <%@ include file="assets/inc/theme.jsp" %>
-
+        <script>
+            function openEditModal(id, apellido, nombre, dni, sexo, fecha,responsable) {
+                $('#editID').val(id);
+                $('#editApellido').val(apellido);
+                $('#editNombre').val(nombre);
+                $('#editDNI').val(dni);
+                $('#editSexo').val(sexo);
+                $('#editFecha').val(fecha);
+                $('#editResponsable').val(responsable);
+                $('#mdlEditar').modal('show');
+            }
+        </script>
         <!-- Vendor js -->
         <script src="assets/js/vendor.min.js"></script>
 
