@@ -67,33 +67,33 @@
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Pabellón</th>
                                                 <th>Aula</th>
                                                 <th>Aforo</th>
+                                                <th>Pabellón</th>
+                                                <th>Descripción</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <%
-                                                DAOdocente dao = new DAOdocente();
-                                                ArrayList<DTOdocente> Lista = dao.ListarDocentes();
-                                                DTOdocente d = null;
+                                                DAOsalon dao = new DAOsalon();
+                                                ArrayList<DTOsalon> Lista = dao.ListarSalones();
+                                                DTOsalon s = null;
                                                 for (int i = 0; i < Lista.size(); i++) {
-                                                    d = Lista.get(i);
+                                                    s = Lista.get(i);
                                             %>
                                             <tr>
-                                                <td><%= d.getId_docente()%></td>
-                                                <td><%= d.getApellido()%></td>
-                                                <td><%= d.getNombre()%></td>
-                                                <td><%= d.getDni()%></td>
-                                                <td><%= d.getSexo()%></td>
-                                                <td><%= d.getFecha()%></td>
+                                                <td><%= s.getId_salon()%></td>
+                                                <td><%= s.getNombre()%></td>
+                                                <td><%= s.getCapacidad()%></td>
+                                                <td><%= s.getUbicacion()%></td>
+                                                <td><%= s.getDescripcion()%></td>
                                                 <td class="text-center">
-                                                    <a class="btn btn-warning" onclick="openEditModal('<%= d.getId_docente()%>', '<%= d.getApellido()%>', '<%= d.getNombre()%>', '<%= d.getDni()%>', '<%= d.getSexo()%>', '<%= d.getFecha()%>')">Editar</a>
-                                                    <a class="btn btn-danger" href="ControladorDocente?accion=eliminar&iddoc=<%= d.getId_docente()%>">Eliminar</a>
+                                                    <a class="btn btn-warning" onclick="openEditModal('<%= s.getId_salon()%>', '<%= s.getNombre()%>', '<%= s.getCapacidad()%>', '<%= s.getUbicacion()%>', '<%= s.getDescripcion()%>')">Editar</a>
+                                                    <a class="btn btn-danger" href="ControladorSalon?accion=eliminar&idsalon=<%= s.getId_salon()%>">Eliminar</a>
                                                 </td>
                                             </tr>
-                                            <%  }%>
+                                            <% } %>
                                         </tbody>
                                     </table>
                                 </div>
@@ -112,27 +112,71 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="standard-modalLabel">Agregar Salon</h4>
+                            <h4 class="modal-title" id="standard-modalLabel">Agregar Salón</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="example-number" class="form-label">Pabellon</label>
-                                <input class="form-control" id="example-number" type="text" name="number">
+                        <form action="ControladorSalon">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="txtAula" class="form-label">Aula</label>
+                                    <input type="text" id="txtAula" class="form-control" name="txtNombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="simpleinput" class="form-label">Aforo</label>
+                                    <input type="number" id="simpleinput" class="form-control" name="txtCapacidad">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtUbicacion" class="form-label">Pabellón</label>
+                                    <input type="text" id="txtUbicacion" class="form-control"  name="txtUbicacion">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="txtDescripcion" class="form-label">Descripcion</label>
+                                    <input type="text" id="txtDescripcion" class="form-control" name="txtDescripcion">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <label for="example-number" class="form-label">Aula</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                <input class="btn btn-primary" type="submit" name="accion" value="Agregar">
                             </div>
-                            <div class="mb-3">
-                                <label for="example-number" class="form-label">Aforo</label>
-                                <input class="form-control" id="example-number" type="number" name="number">
-                            </div>
+                        </form>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="mdlEditar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="standard-modalLabel">Editar Docente</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
+                        <form action="ControladorSalon">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="editID" class="form-label">ID</label>
+                                    <input type="number" id="editID"  class="form-control" name="txtID">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editNombre" class="form-label">Aula</label>
+                                    <input type="text" id="editNombre" class="form-control" name="txtNombre">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editCapacidad" class="form-label">Aforo</label>
+                                    <input type="number" id="editCapacidad" class="form-control" name="txtCapacidad">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editUbicacion" class="form-label">Pabellón</label>
+                                    <input type="text" id="editUbicacion" class="form-control"  name="txtUbicacion">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="editDescripcion" class="form-label">Descripcion</label>
+                                    <input type="text" id="editDescripcion" class="form-control" name="txtDescripcion">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                <input class="btn btn-primary" type="submit" name="accion" value="Actualizar">
+                            </div>
+                        </form>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
@@ -146,13 +190,12 @@
         <!-- Theme Settings -->
         <%@ include file="assets/inc/theme.jsp" %>
         <script>
-            function openEditModal(id, apellido, nombre, dni, sexo, fecha) {
+            function openEditModal(id, nombre, capacidad, ubicacion, descripcion) {
                 $('#editID').val(id);
-                $('#editApellido').val(apellido);
                 $('#editNombre').val(nombre);
-                $('#editDNI').val(dni);
-                $('#editSexo').val(sexo);
-                $('#editFecha').val(fecha);
+                $('#editCapacidad').val(capacidad);
+                $('#editUbicacion').val(ubicacion);
+                $('#editDescripcion').val(descripcion);
                 $('#mdlEditar').modal('show');
             }
         </script>

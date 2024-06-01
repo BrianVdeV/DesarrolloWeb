@@ -40,9 +40,10 @@ CREATE TABLE docente (
 
 CREATE TABLE salon (
     id_salon INT AUTO_INCREMENT PRIMARY KEY,
-    numero INT,
+    nombre varchar(50),
     capacidad INT,
-    ubicacion VARCHAR(100)
+    ubicacion VARCHAR(100),
+    descripcion VARCHAR(100)
 );
 
 CREATE TABLE curso (
@@ -86,6 +87,7 @@ insert into usuario (nombre,correo,contra) values ('Edgar','edgar@gmail.com','12
 insert into usuario (nombre,correo,contra) values ('Alex','alex@gmail.com','1234');
 insert into usuario (nombre,correo,contra) values ('Xiomara','xiomara@gmail.com','1234');
 
-insert into curso (nombre,anio,horas) values ('Matematica','1','1');
 insert into docente (apellido,nombre,dni,sexo,fecha) values ('Esposito','Daniel','12345678','Masculino','1976-08-02');
 insert into estudiante (apellido,nombre,dni,sexo,fecha,responsable) values ('Messi','Lionel','12345678','Masculino','2004-09-21','Messi Daniel');
+insert into salon (nombre,capacidad,ubicacion,descripcion) values (1,24,'B','');
+insert into curso (nombre,anio,horas) values ('Matematica','1','1');
