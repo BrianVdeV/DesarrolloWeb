@@ -168,7 +168,7 @@
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="editID" class="form-label">ID</label>
-                                    <input type="number" id="editID" disabled="" class="form-control" name="txtID">
+                                    <input type="number" id="editID" class="form-control" name="txtID">
                                 </div>
                                 <div class="mb-3">
                                     <label for="editApellido" class="form-label">Apellido</label>

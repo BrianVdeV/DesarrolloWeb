@@ -134,7 +134,7 @@
                     </span>
                     <span class="d-lg-flex flex-column gap-1 d-none">
                         <h5 class="my-0">Jorge Velez de Villa</h5>
-                        <!--<h6 class="my-0 fw-normal">Administrador</h6> -->
+                        <!--<h6 class="my-0 fw-normal">Administrador</h6> <=user.getNombre()%>-->
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
